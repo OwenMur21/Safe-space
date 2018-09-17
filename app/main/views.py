@@ -1,6 +1,15 @@
 from . import main
+from flask import render_template
+
+
 
 @main.route('/')
-def index():
-    return '<h1> Hello World </h1>'
+def home():
+    """
+    Functiom  that renders the home page
+    """
+    title="Welcome | Safe Space"
 
+    return render_template('home.html', title=title)
+
+    
