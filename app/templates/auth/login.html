@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+
+{% block content %}
+<div class="container logiin"> 
+    <div class="row">
+      <div class= "col-md-2"> </div>
+      <div class="col-md-8">
+      <!--Flash message -->
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+      {% endfor %}
+      <!-- Login form -->
+      {{wtf.quick_form(login_form)}}
+      <br>
+      <p class="dont"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+     </div>
+     <div clas="col-md-2"> </div>
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+    
+    .logiin{
+      font-size: 16.5px;
+      font-family: 'Nunito Sans', sans-serif !important;
+      color: rgb(12, 12, 12);
+    }
+    .dont{
+      font-size: 16px;
+    }
+  </style>
+
+{% endblock%}
