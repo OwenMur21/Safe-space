@@ -3,4 +3,29 @@
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
+   
+}
+body{
+    background-image: url("/static/photos/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.title{
+display: none;
+font-family: 'Baloo Tammudu', cursive;
+font-size: 80px;
+
+}
+
+.logo1{
+    display: none;
+    font-family: 'Baloo Tammudu', cursive;
+    font-size: 70px;
+}
+.logo2{
+    display: none;
+    font-family: 'Baloo Tammudu', cursive;
+    font-size: 70px;
 }
