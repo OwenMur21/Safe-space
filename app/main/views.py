@@ -1,5 +1,6 @@
 from . import main
 from flask import render_template
+from flask_login import login_required, current_user
 
 
 
@@ -27,6 +28,10 @@ def identity():
     """
     Function that chooses the identity crisis category
     """
+    # form = PostForm()
+    # if form.validate_on_submit():
+    #     content = form.content.data
+
 
     return render_template('crisis.html')
 
@@ -40,13 +45,13 @@ def fam():
     return render_template('fam.html')
 
 
-@main.route('/depression')
+@main.route('/mental')
 def depression():
     """
     Function that chooses the depression category
     """
 
-    return render_template('fam.html')
+    return render_template('mental.html')
 
 
 @main.route('/health')
