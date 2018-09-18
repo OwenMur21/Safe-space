@@ -1,0 +1,26 @@
+{% extends 'base.html'%} 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet"> 
+{% endblock %}
+{% block content %}
+
+<body>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div id="this">
+                <h1 class="title">Welcome</h1>
+                <center>
+                <p class="logo1">to</p>
+                <p class="logo1">Safe-Space</p>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type=text/javascript src="{{url_for('static', filename='js/home.js') }}"></script>
+</body>
+{% endblock %}
