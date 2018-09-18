@@ -1,6 +1,8 @@
 from . import main
 from flask import render_template
 from flask_login import login_required, current_user
+from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Commenthealth, Mental, Commentmental
+from .forms import PostForm, CommentForm
 
 
 
@@ -28,12 +30,13 @@ def identity():
     """
     Function that chooses the identity crisis category
     """
-    # form = PostForm()
-    # if form.validate_on_submit():
-    #     content = form.content.data
-
-
-    return render_template('crisis.html')
+    form = PostForm()
+    if form.validate_on_submit():
+        content = form.content.data
+        new_crisis=Crisis(content=content, user_id=current_user.id, user_name=current_user.username)
+        new_crisis.save_crisis
+        
+    return render_template('crisis.html',form=form)
 
 
 @main.route('/fam')
