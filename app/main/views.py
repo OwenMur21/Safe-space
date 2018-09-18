@@ -1,6 +1,10 @@
 from . import main
+from flask import render_template
 
-@main.route('/')
+@main.route('/index')
 def index():
-    return '<h1> Hello World </h1>'
+   """
+   Function that returns the index which has all the categories
+   """
 
+   return render_template('index.html')
