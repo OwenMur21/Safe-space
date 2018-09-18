@@ -174,16 +174,16 @@ class Mental(db.Model):
     user_name = db.Column(db.Integer, db.ForeignKey("users.name"))
     comments = db.relationship('Comment', backref='title', lazy='dynamic')
 
-    def save_mentalrself):
+    def save_mental(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
     def get_mental(cls):
-       mental = Mental.query.all()
+        mental = Mental.query.all()
         return mental
-
-class Comment(db.Model):
+                   
+class Commentmental(db.Model):
     __tablename__ = 'mentalcomments'
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
