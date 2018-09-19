@@ -2,3 +2,4 @@ virtual/
 *.pyc
 migrations/
 app/main/__pycache__/
+app/auth/__pycache__/

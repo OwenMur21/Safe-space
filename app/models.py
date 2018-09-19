@@ -1,16 +1,18 @@
 from . import db
 import random
+import string
 from random import choice
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 
 @login_manager.user_loader
-def load_user(user_name):
-    return User.query.get(str(user_name))
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
+    id = db.Column(db.Integer)
     username = db.Column(db.String(255),primary_key = True)
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
@@ -31,7 +33,7 @@ class User(UserMixin,db.Model):
     def password(self, password):
         self.pass_secure = generate_password_hash(password)
 
-    def random_username(self):
+    def random_username():
         alphabet = string.ascii_letters
         username = ''.join(choice(alphabet) for i in range(8))
         return username
