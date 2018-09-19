@@ -7,13 +7,13 @@ from flask_login import UserMixin
 from . import login_manager
 
 @login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def load_user(user_int):
+    return User.query.get(int(user_int))
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
-    id = db.Column(db.Integer)
-    username = db.Column(db.String(255),primary_key = True)
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     crisis = db.relationship('Crisis', backref='user', lazy='dynamic')
@@ -49,7 +49,7 @@ class Crisis(db.Model):
     __tablename__ = 'crisis'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255))
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentcrisis', backref='crisis', lazy='dynamic')
 
     def save_crisis(self):
@@ -64,7 +64,7 @@ class Crisis(db.Model):
 class Commentcrisis(db.Model):
     __tablename__ = 'crisiscomments'
     id = db.Column(db.Integer, primary_key = True)
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     crisis_id = db.Column(db.Integer, db.ForeignKey('crisis.id'))
     description = db.Column(db.String(255))
 
@@ -86,7 +86,7 @@ class Fam(db.Model):
     __tablename__ = 'fams'
     id = db.Column(db.Integer, primary_key = True)
     content = db.Column(db.String(255))
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentfam', backref='title', lazy='dynamic')
 
     def save_Fam(self):
@@ -101,7 +101,7 @@ class Fam(db.Model):
 class Commentfam(db.Model):
     __tablename__ = 'famcomments'
     id = db.Column(db.Integer, primary_key = True)
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     fam_id = db.Column(db.Integer, db.ForeignKey('fams.id'))
     description = db.Column(db.String(255))
 
@@ -125,7 +125,7 @@ class Health(db.Model):
     __tablename__ = 'health'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255))
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commenthealth', backref='title', lazy='dynamic')
 
     def save_health(self):
@@ -140,7 +140,7 @@ class Health(db.Model):
 class Commenthealth(db.Model):
     __tablename__ = 'healthcomments'
     id = db.Column(db.Integer, primary_key = True)
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     health_id = db.Column(db.Integer, db.ForeignKey('health.id'))
     description = db.Column(db.String(255))
 
@@ -163,7 +163,7 @@ class Mental(db.Model):
     __tablename__ = 'mental'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255))
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentmental', backref='mental', lazy='dynamic')
 
     def save_mental(self):
@@ -178,7 +178,7 @@ class Mental(db.Model):
 class Commentmental(db.Model):
     __tablename__ = 'mentalcomments'
     id = db.Column(db.Integer, primary_key = True)
-    user_name = db.Column(db.String, db.ForeignKey("users.username"))
+    user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     mental_id = db.Column(db.Integer, db.ForeignKey('mental.id'))
     description = db.Column(db.String(255))
 
