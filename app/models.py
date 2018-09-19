@@ -70,7 +70,7 @@ class Commentcrisis(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     crisis_id = db.Column(db.Integer, db.ForeignKey('crisis.id'))
-    description = db.Column(db.String(255))
+    description = db.Column(db.Text,nullable=False)
 
     def save_comment(self):
         """
