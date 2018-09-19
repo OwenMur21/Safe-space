@@ -3,14 +3,10 @@
 {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
 <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet"> 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}"> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 {% block content %}
 
@@ -19,18 +15,16 @@
     <div class="container">
         <div class="row">
             <div id="this">
-                <h1 class="title">Welcome</h1>
-                <center>
-                <p class="logo1">To</p>
-                <p class="logo1">Safe-Space</p>
-                <br>
-                {% if current_user.is_authenticated %}
-                <a class="nav-link" href="{{url_for('auth.login')}}"><button type="button" class="btn-lg btn btn-success buttons">View &nbsp;<span class="glyphicon glyphicon-log-in"></span></button></a>
-                <h3 class="or">Or</h3>
-                {% else %}
-                <a class="nav-link" href="{{url_for('auth.register')}}"><button type="button" class="btn-lg btn btn-success buttons">Register an Account &nbsp;<span class="glyphicon glyphicon-login"></span></button></a>
-                {% endif %}
-                </center>
+                        <center>
+                                <h1 class="title"><b>Welcome</b></h1>
+                                <p class="logo1"><b>To</b></p>
+                                <p class="logo1"><b>Safe-Space</b></p>
+                                <br>
+                                <a class="nav-link" href="{{url_for('auth.login')}}"><button type="button" class="btn-lg btn btn-success buttons">Login &nbsp;<span class="glyphicon glyphicon-log-in"></span></button></a>
+                                <h3 class="or">Or</h3>
+                                <a class="nav-link" href="{{url_for('auth.register')}}"><button type="button" class="btn-lg btn btn-success buttons">Register an Account &nbsp;<i class="fa fa-user-plus"></i></span></button></a>
+                                </center>
+                </div>
               
             </div>
         </div>
@@ -40,7 +34,7 @@
 <script type=text/javascript src="{{url_for('static', filename='js/home.js') }}"></script>
 </body>
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Nunito');
+    @import url('https://fonts.googleapis.com/css?family=Nunito+Candal+Patua+One');
     body{
         background: url(/static/photos/bb.jpeg);
         background-position: center;
@@ -50,17 +44,18 @@
     }
     .title{
         color: whitesmoke;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Candal', sans-serif;
     }
     .logo1{
         color: whitesmoke;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Candal', sans-serif;
     }
     .buttons{
-        font-family: 'Nunito', sans-serif; 
+        font-family: 'Patua One', cursive; 
+        font-size: 16.5px;
     }
     .or{
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Patua One', cursive; 
     }
 </style>
 {% endblock %}
