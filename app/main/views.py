@@ -5,7 +5,6 @@ from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Comme
 from .forms import PostForm, CommentForm
 
 
-
 @main.route('/')
 def home():
     """
