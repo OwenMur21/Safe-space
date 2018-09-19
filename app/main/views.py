@@ -3,7 +3,13 @@ from flask import render_template
 from flask_login import login_required, current_user
 from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Commenthealth, Mental, Commentmental
 from .forms import PostForm, CommentForm
+from datetime import datetime
 
+@main.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 
 @main.route('/')

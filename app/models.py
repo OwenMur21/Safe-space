@@ -4,6 +4,9 @@ from random import choice
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+import json
+from datetime import datetime
+from time import time
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -25,7 +28,21 @@ class User(UserMixin,db.Model):
     commentshealth = db.relationship('Commenthealth', backref = 'user', lazy = 'dynamic')
     mental = db.relationship('Mental', backref = 'user', lazy = 'dynamic')
     commentsmental = db.relationship('Commentmental', backref = 'user', lazy = 'dynamic')
+    last_seen = db.relationship('DateTime', backref ='user',lazy = 'dynamic')
+    notifications = db.relationship('Notification', backref='user',lazy='dynamic')
+    messages_sent = db.relationship('Message',
+                                    foreign_keys='Message.sender_id',
+                                    backref='author', lazy='dynamic')
+    messages_received = db.relationship('Message',
+                                        foreign_keys='Message.recipient_id',
+                                        backref='recipient', lazy='dynamic')
+    last_message_read_time = db.Column(db.DateTime)
 
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
+        return Message.query.filter_by(recipient=self).filter(
+            Message.timestamp > last_read_time).count()
+            
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -204,4 +221,23 @@ class Commentmental(db.Model):
         return comment
 
     def __repr__(self):
-        return f'Comment: {self.content}'        
+        return f'Comment: {self.content}' 
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<Message {}>'.format(self.body)
+
+class Notification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    timestamp = db.Column(db.Float, index=True, default=time)
+    payload_json = db.Column(db.Text)
+
+    def get_data(self):
+        return json.loads(str(self.payload_json))
