@@ -4,6 +4,7 @@ from .forms import RegistrationForm, LoginForm
 from .. import db
 from flask_login import login_user, login_required, logout_user
 from ..email import mail_message
+from ..models import User
 
 #....
 @auth.route('/login',methods=['GET','POST'])
@@ -17,7 +18,7 @@ def login():
 
         flash('Invalid username or Password')
 
-    title = "Pitcher Login"
+    title = "Safe-Space Login"
     return render_template('auth/login.html',login_form = login_form,title=title)
 #....
 
@@ -27,11 +28,9 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        user = User(username=User.random_username(), email = form.email.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
-
-        mail_message("Welcome to pitch","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         title = "New Account"
