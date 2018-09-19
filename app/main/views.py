@@ -30,13 +30,16 @@ def identity():
     """
     Function that chooses the identity crisis category
     """
+    identities=Crisis.query.all()
+    if identities is None:
+        abort(404)
     form = PostForm()
     if form.validate_on_submit():
         content = form.content.data
-        new_crisis=Crisis(content=content, user_id=current_user.id, user_name=current_user.username)
+        new_crisis=Crisis(content=content,user_name=current_user.username)
         new_crisis.save_crisis
-        
-    return render_template('crisis.html',form=form)
+
+    return render_template('crisis.html',form=form,identities=identities)
 
 
 @main.route('/fam')

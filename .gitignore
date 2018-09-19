@@ -3,3 +3,4 @@ virtual/
 *.pyc
 app/main/__pycache__/
 
+migrations/
