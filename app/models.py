@@ -79,6 +79,10 @@ class Commentcrisis(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def get_comments(self, id):
         comment = Commentcrisis.query.filter_by(crisis_id=id).all()
@@ -118,6 +122,10 @@ class Commentfam(db.Model):
         Function that saves the fam' comments
         """
         db.session.add(self)
+        db.session.commit()
+
+    def delete_commentl(self):
+        db.session.delete(self)
         db.session.commit()
 
 
@@ -163,6 +171,10 @@ class Commenthealth(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete_commenthealth(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def get_commenthealth(self, id):
         comment = Commenthealth.query.filter_by(health_id=id).all()
@@ -203,6 +215,10 @@ class Commentmental(db.Model):
         Function that saves the depression' comments
         """
         db.session.add(self)
+        db.session.commit()
+
+    def delete_commentmental(self):
+        db.session.delete(self)
         db.session.commit()
 
     @classmethod
