@@ -177,7 +177,7 @@ def view_crisis(id):
         description = form.description.data
         new_comment=Commentcrisis(description=description,user_id=current_user.id,crisis_id=the_crisis.id)
         new_comment.save_comment()
-        # return redirect(url_for('.view_crisis'))
+        return redirect(url_for('.view_crisis',id=id))
 
   
     return render_template('commentcrisis.html', crisis=the_crisis, comments=comments,form=form)
@@ -195,6 +195,7 @@ def view_fam(id):
         description = form.description.data
         new_comment=Commentfam(description=description,user_id=current_user.id,fam_id=the_fam.id)
         new_comment.save_commentl()
+        return redirect(url_for('.view_fam',id=id))
     return render_template('commentfam.html', fam=the_fam, comments=comments, form=form)
 
 @main.route('/view-health/<int:id>', methods=['GET', 'POST'])
@@ -210,6 +211,7 @@ def view_health(id):
         description = form.description.data
         new_comment=Commenthealth(description=description,user_id=current_user.id,health_id=the_health.id)
         new_comment.save_commenthealth()
+        return redirect(url_for('.view_health',id=id))
     return render_template('commenthealth.html', health=the_health, comments=comments, form=form)
 
 @main.route('/view-mental/<int:id>', methods=['GET', 'POST'])
@@ -225,5 +227,59 @@ def view_mental(id):
         description = form.description.data
         new_comment=Commentmental(description=description,user_id=current_user.id,mental_id=the_mental.id)
         new_comment.save_commentmental()
+        return redirect(url_for('.view_mental',id=id))
     return render_template('commentmental.html', mental=the_mental, comments=comments, form=form)
+
+@main.route('/delete-comment/<int:id>', methods=['GET', 'POST'])
+@login_required
+def del_comment(id):
+    """
+    Function that enables one to delete a comment in crisis
+    """
+    comment = Commentcrisis.query.filter_by(id=id).first()
+    crisis = Crisis.query.filter_by(id = comment.crisis_id).first()
+    if comment.user_id != current_user.id:
+        abort(403)
+    comment.delete_comment()
+    return redirect(url_for('.view_crisis',id=crisis.id))
+
+
+@main.route('/delete-commentl/<int:id>', methods=['GET', 'POST'])
+@login_required
+def del_commentl(id):
+    """
+    Function that enables one to delete a comment in fam
+    """
+    comment = Commentfam.query.filter_by(id=id).first()
+    fam = Fam.query.filter_by(id = comment.fam_id).first()
+    if comment.user_id != current_user.id:
+        abort(403)
+    comment.delete_commentl()
+    return redirect(url_for('.view_fam',id=fam.id))
+
+@main.route('/delete-commenth/<int:id>', methods=['GET', 'POST'])
+@login_required
+def del_commenth(id):
+    """
+    Function that enables one to delete a comment in health
+    """
+    comment = Commenthealth.query.filter_by(id=id).first()
+    health = Health.query.filter_by(id = comment.health_id).first()
+    if comment.user_id != current_user.id:
+        abort(403)
+    comment.delete_commenthealth()
+    return redirect(url_for('.view_health',id=health.id))
+
+@main.route('/delete-commentm/<int:id>', methods=['GET', 'POST'])
+@login_required
+def del_commentm(id):
+    """
+    Function that enables one to delete a comment in mental
+    """
+    comment = Commentmental.query.filter_by(id=id).first()
+    mental = Mental.query.filter_by(id = comment.mental_id).first()
+    if comment.user_id != current_user.id:
+        abort(403)
+    comment.delete_commentmental()
+    return redirect(url_for('.view_mental',id=mental.id))
 
