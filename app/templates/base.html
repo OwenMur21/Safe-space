@@ -1,8 +1,12 @@
 {% extends 'bootstrap/base.html'%}
 
-{% block styles%}
-  {{ super() }}
-{% endblock %}
-{% block content %}
+{% block navbar %}
+{% include 'navbar.html' %}
 {% endblock %}
 
+{% block styles%}
+   {{ super() }}
+{% endblock %}
+
+{% block content %}
+{% endblock %}

@@ -1,5 +1,3 @@
 virtual/
-migrations/
 *.pyc
-app/__pycache__/
-app/main/__pycache__/
+migrations/
