@@ -48,12 +48,16 @@ class User(UserMixin,db.Model):
 class Crisis(db.Model):
     __tablename__ = 'crisis'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(255))
+    content = db.Column(db.Text,nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentcrisis', backref='crisis', lazy='dynamic')
 
     def save_crisis(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete_crisis(self):
+        db.session.delete(self)
         db.session.commit()
 
     @classmethod
@@ -85,12 +89,16 @@ class Commentcrisis(db.Model):
 class Fam(db.Model):
     __tablename__ = 'fams'
     id = db.Column(db.Integer, primary_key = True)
-    content = db.Column(db.String(255))
+    content = db.Column(db.Text,nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentfam', backref='title', lazy='dynamic')
 
     def save_Fam(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete_fam(self):
+        db.session.delete(self)
         db.session.commit()
 
     @classmethod
@@ -124,12 +132,16 @@ class Commentfam(db.Model):
 class Health(db.Model):
     __tablename__ = 'health'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(255))
+    content = db.Column(db.Text,nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commenthealth', backref='title', lazy='dynamic')
 
     def save_health(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete_health(self):
+        db.session.delete(self)
         db.session.commit()
 
     @classmethod
@@ -162,12 +174,16 @@ class Commenthealth(db.Model):
 class Mental(db.Model):
     __tablename__ = 'mental'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(255))
+    content = db.Column(db.Text,nullable=False)
     user_id= db.Column(db.Integer, db.ForeignKey("users.id"))
     comments = db.relationship('Commentmental', backref='mental', lazy='dynamic')
 
     def save_mental(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete_mental(self):
+        db.session.delete(self)
         db.session.commit()
 
     @classmethod
