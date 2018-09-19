@@ -1,1 +1,4 @@
 virtual/
+*.pyc
+migrations/
+app/main/__pycache__/
