@@ -160,7 +160,7 @@ def del_health(id):
     health = Health.query.get_or_404(id)
     if health.user_id != current_user.id:
         abort(403)
-    crisis.delete_health()
+    health.delete_health()
     return redirect(url_for('main.new_health'))
 
 
@@ -170,9 +170,17 @@ def view_crisis(id):
     """
     Returns the crisis to be commented on
     """
-    crisis = Crisis.query.get(id)
-    comments = Commentcrisis.get_comments(id)
-    return render_template('commentcrisis.html', crisis=crisis, comments=comments, id=id)
+    the_crisis = Crisis.query.filter_by(id = id).first()
+    comments = Commentcrisis.query.filter_by(crisis_id=id).all()
+    form=CommentForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        new_comment=Commentcrisis(description=description,user_id=current_user.id,crisis_id=the_crisis.id)
+        new_comment.save_comment()
+        # return redirect(url_for('.view_crisis'))
+
+  
+    return render_template('commentcrisis.html', crisis=the_crisis, comments=comments,form=form)
 
 @main.route('/view-fam/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -180,27 +188,42 @@ def view_fam(id):
     """
     Returns the fam to be commented on
     """
-    fam = Fam.query.get(id)
-    comments = Commentfam.get_commentsl(id)
-    return render_template('commentfam.html', fam=fam, comments=comments, id=id)
+    the_fam = Fam.query.filter_by(id = id).first()
+    comments = Commentfam.query.filter_by(fam_id=id).all()
+    form=CommentForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        new_comment=Commentfam(description=description,user_id=current_user.id,fam_id=the_fam.id)
+        new_comment.save_commentl()
+    return render_template('commentfam.html', fam=the_fam, comments=comments, form=form)
 
 @main.route('/view-health/<int:id>', methods=['GET', 'POST'])
 @login_required
 def view_health(id):
     """
-    Returns the crisis to be commented on
+    Returns the health to be commented on
     """
-    health = Health.query.get(id)
-    comments = Commenthealth.get_commenthealth(id)
-    return render_template('commenthealth.html', health=health, comments=comments, id=id)
+    the_health = Health.query.filter_by(id = id).first()
+    comments = Commenthealth.query.filter_by(health_id=id).all()
+    form=CommentForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        new_comment=Commenthealth(description=description,user_id=current_user.id,health_id=the_health.id)
+        new_comment.save_commenthealth()
+    return render_template('commenthealth.html', health=the_health, comments=comments, form=form)
 
 @main.route('/view-mental/<int:id>', methods=['GET', 'POST'])
 @login_required
 def view_mental(id):
     """
-    Returns the crisis to be commented on
+    Returns the mental to be commented on
     """
-    mental = Mental.query.get(id)
-    comments = Commentmental.get_commentmental(id)
-    return render_template('commentmental.html', mental=mental, comments=comments, id=id)
+    the_mental = Mental.query.filter_by(id = id).first()
+    comments = Commentmental.query.filter_by(health_id=id).all()
+    form=CommentForm()
+    if form.validate_on_submit():
+        description = form.description.data
+        new_comment=Commentmental(description=description,user_id=current_user.id,mental_id=the_mental.id)
+        new_comment.save_commentmental()
+    return render_template('commentmental.html', mental=the_mental, comments=comments, form=form)
 
