@@ -1,4 +1,4 @@
-#this{
+/* #this{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -6,7 +6,7 @@
    
 }
 body{
-    background-image: url("/static/photos/bg.jpg");
+    background-image: url("/static/photos/safe.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -28,4 +28,4 @@ font-size: 80px;
     display: none;
     font-family: 'Baloo Tammudu', cursive;
     font-size: 70px;
-}
+} */

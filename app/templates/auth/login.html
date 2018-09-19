@@ -1,34 +1,50 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet"> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
+{% endblock %}
 
 {% block content %}
-<div class="container logiin"> 
-    <div class="row">
-      <div class= "col-md-2"> </div>
-      <div class="col-md-8">
-      <!--Flash message -->
-      {% for message in get_flashed_messages() %}
-        <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
+<body>
+    <div class="container logiin"> 
+        <div class="row">
+          <div class= "col-md-2"> </div>
+          <div class="col-md-8">
+          <!--Flash message -->
+          {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+            </div>
+          {% endfor %}
+          <!-- Login form -->
+          {{wtf.quick_form(login_form)}}
+          <br>
+          <p class="dont"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+         </div>
+         <div clas="col-md-2"> </div>
         </div>
-      {% endfor %}
-      <!-- Login form -->
-      {{wtf.quick_form(login_form)}}
-      <br>
-      <p class="dont"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
-     </div>
-     <div clas="col-md-2"> </div>
     </div>
-</div>
+</body>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+  body{
+    background: #2E4053;
+  }
     
     .logiin{
       font-size: 16.5px;
-      font-family: 'Nunito Sans', sans-serif !important;
-      color: rgb(12, 12, 12);
+      font-family: 'Patua One', cursive !important;
+      color: white;
     }
     .dont{
       font-size: 16px;

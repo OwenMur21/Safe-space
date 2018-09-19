@@ -21,9 +21,17 @@
             <div id="this">
                 <h1 class="title">Welcome</h1>
                 <center>
-                <p class="logo1">to</p>
+                <p class="logo1">To</p>
                 <p class="logo1">Safe-Space</p>
+                <br>
+                {% if current_user.is_authenticated %}
+                <a class="nav-link" href="{{url_for('auth.login')}}"><button type="button" class="btn-lg btn btn-success buttons">View &nbsp;<span class="glyphicon glyphicon-log-in"></span></button></a>
+                <h3 class="or">Or</h3>
+                {% else %}
+                <a class="nav-link" href="{{url_for('auth.register')}}"><button type="button" class="btn-lg btn btn-success buttons">Register an Account &nbsp;<span class="glyphicon glyphicon-login"></span></button></a>
+                {% endif %}
                 </center>
+              
             </div>
         </div>
     </div>
@@ -31,4 +39,28 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type=text/javascript src="{{url_for('static', filename='js/home.js') }}"></script>
 </body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Nunito');
+    body{
+        background: url(/static/photos/bb.jpeg);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .title{
+        color: whitesmoke;
+        font-family: 'Nunito', sans-serif;
+    }
+    .logo1{
+        color: whitesmoke;
+        font-family: 'Nunito', sans-serif;
+    }
+    .buttons{
+        font-family: 'Nunito', sans-serif; 
+    }
+    .or{
+        font-family: 'Nunito', sans-serif;
+    }
+</style>
 {% endblock %}
