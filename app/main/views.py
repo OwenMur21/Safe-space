@@ -5,7 +5,7 @@ from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Comme
 from .forms import PostForm, CommentForm
 
 
-@main.route('/')
+@main.route('/home')
 def home():
     """
     Function that renders the home page
@@ -13,6 +13,16 @@ def home():
     title="Welcome | Safe Space"
 
     return render_template('home.html', title=title)
+
+
+@main.route('/about')
+def about():
+    """
+    Function that renders the about page
+    """
+    title="About Us"
+
+    return render_template('about.html')
 
 
 @main.route('/index')

@@ -1,13 +1,7 @@
 {% extends 'base.html' %}
 {% block styles%}
 {{ super() }}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}"> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
 {% endblock %}
 {% block content %}
@@ -20,37 +14,37 @@
     
     <div class="row">
       <div class="col-md-6">
-        <div class="card fam">
+        <a href="/fam"><div class="card fam">
           <h3 class="famo">FAMILY CONFLICTS</h3>
           <div class="card-body">
-          </div>
+          </div></a>
         </div>
       </div>
       <br>
       <br>
       <div class="col-md-6">
-        <div class="card depr">
+        <a href="/mental"><div class="card depr">
           <h3 class="men">MENTAL HEALTH</h3>
           <div class="card-body">
           </div>
-        </div>
+        </div></a>
       </div>
     </div>
     <br>
     <br>
     <div class="row">
       <div class="col-md-6">
-        <div class="card health">
+        <a href="/health"><div class="card health">
           <h3 class="hee">HEALTH</h3>
-        </div>
+        </div></a>
       </div>
       <br>
       <br>
       <div class="col-md-6">
-        <div class="card ide">
+        <a href="/identity"><div class="card ide">
           <h3 class="idee">IDENTITY CRISIS</h3>
           <div class="card-body">
-          </div>
+          </div></a>
         </div>
       </div>
     </div>

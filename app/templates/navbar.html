@@ -1,44 +1,49 @@
 <nav class="navbar navbar-inverse navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#" id="safe">SafeSpace</a>
+    <a class="navbar-brand" href="/home" id="safe">Safe-Space</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="navbar-collapse collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="/index"><button type="button" class="btn-lg btn btn-success buttonss">Home &nbsp;<span class="glyphicon glyphicon-home"></span></button><span class="sr-only">(current)</span></a>
+            </li>
+            &nbsp; &nbsp;
+            <li class="nav-item">
+                <a class="nav-link" href="/about"><button type="button" class="btn-lg btn btn-success buttonss">About &nbsp;<span class="glyphicon glyphicon-share-alt"></span></button></a>
+              </li>
+              &nbsp; &nbsp;
         <li class="nav-item">
-          <a class="nav-link" href="#"><button type="button" class="btn-lg btn btn-success buttons">SOS &nbsp;<span class="glyphicon glyphicon-share-alt"></span></button><span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#"><button type="button" class="btn-lg btn btn-success buttonss">SOS &nbsp;<span class="glyphicon glyphicon-share"></span></button><span class="sr-only">(current)</span></a>
         </li>
         &nbsp; &nbsp;
         <li class="nav-item">
-          <a class="nav-link" href="#"><button type="button" class="btn-lg btn btn-success buttons">Private Messages &nbsp;<span class="glyphicon glyphicon-envelope"></span></button></a>
+          <a class="nav-link" href="#"><button type="button" class="btn-lg btn btn-success buttonss">Private Messages &nbsp;<span class="glyphicon glyphicon-envelope"></span></button></a>
         </li>
       </ul>
     </div>
-      
+    {% if current_user.is_authenticated %}
     <div class="navbar-collapse collapse" id="navbarColor01">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/authenticate/login"><button type="button" class="btn-lg btn btn-success buttons">Login &nbsp;<span class="glyphicon glyphicon-log-in"></span></button></a>
+                <a class="nav-link" href="{{url_for('auth.logout')}}"><button type="button" class="btn-lg btn btn-success buttonss">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></button><span class="sr-only">(current)</span></a>
               </li>
+              &nbsp; &nbsp;
         </ul>
       </div>
-   
+      {% endif %}
+    
   </nav>
   <style>
     #safe{
-      font-size: 25px;
+      font-size: 32px;
+      font-family: 'Patua One', cursive; 
     }
-    .login{
-    color: whitesmoke !important;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 16px;
-    float: right;
-  }
-  .login:hover{
-    color: rgb(60, 60, 63) !important;
-  }
-  .buttons{
-    font-size: 16px;
-  }
+ .buttonss{
+   font-size: 16.5px;
+   font-family: 'Patua One', cursive;
+ }
+ 
+
   </style>
