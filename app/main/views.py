@@ -5,7 +5,7 @@ from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Comme
 from .forms import PostForm, CommentForm
 
 
-@main.route('/home')
+@main.route('/')
 def home():
     """
     Function that renders the home page
