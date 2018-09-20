@@ -3,3 +3,4 @@ virtual/
 migrations/
 app/main/__pycache__/
 app/auth/__pycache__/
+*.sh
