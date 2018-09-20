@@ -1,120 +1,70 @@
-# DESCRIPTION
+# Safe-Space
+This application was created from 17th September to 20th September 2018.
 
-This is a **shell script** that that allows **execution of Django** a python based framework.
+# Authors
+- Owen Muriithi
+- Gift Lumumba
+- Hannah Chege
+- Natasha Senah
 
-A shell script is a **computer program** designed to be run by the Unix shell, a command-line interpreter. The various dialects of shell scripts are considered to be scripting languages. Typical operations performed by shell scripts ***include file manipulation, program execution, and printing text.*** A script which sets up the environment, runs the program, and does any necessary cleanup, logging, etc. is called a wrapper.
-
-**What is Flask**
-
-Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions.
-
-Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries and is mostly used to build small application with simpler requirements.
-
-# WHAT THE SHELL SCRIPT DOES FOR YOU.
-
-**{Please go through what this shell-script does for you. It will help you avoid bugs in your code. In case you use a technology that might cause failure of your code to run}**
-
-**By Running the app it simply:**
-
-1. Initializes **Empty Git Repository**
-
-2. Installs **flask**
-
-3. Installs **werkzeug**
-
-4. Installs **click**
-
-5. Installs **Jinja**
-
-6. Installs **flask script**
-
-7. Installs **flask-bootstrap**
-
-8. Installs **gunicorn**
-
-9. Installs **flask-wtf**
-
-10. Installs **flask-sqalchemy**
+## Link to Deployed Site on Heroku
 
 
-**CREATED FILES**
-
-The script also **helps in creating files needed in flask** and this making it easy for you to code as you no longer hav to create them on your own.
-
-It simply creates files and adds the preset standard code thats will not change in any given file structure.
-
-**You are now ready to code.** 
-
-# Prerequisites
-
-* You need to have nano text editor installed. you can find out whether you have it installed by typing nano --version in your terminal. For most linux distributions, it is installed by default. 
+## Description
+This is a an application that helps and provides a safe and conducive environment for people suffering from various personal and social issues such as family conflicts,health,identity crisis and mental issues through personal and in-depth interactions with guys who will be willing to stand by them and offer immense and life-changing advice.
 
 
-**Installing Nano Text Editor.**
+## Set-Up
+To access this application on your local machine:
 
--However, if you don't have it installed, you can quicky do that by typing:
-
-
-```
- sudo apt-get install nano
-```
-
-* You need to have (python3.6) installed in your machine.
-
--To check if you already have python3.6 before installing type:
-
+1.Clone the repo.On your terminal run:
+`git clone https://github.com/OwenMur21/Safe-space.git`
+2.Create a virtual environment
+`python3.6 -m venv virtual`
+3.Pip install requirements.txt
+4.Create a start.sh file and in it export your secret key, mail username and password and add "python manage.py server" at the last line of code.
+5.On your terminal run: `chmod a+x start.sh`
+6.Then to run type `./start.sh` on your terminal.
 
 
-```
-python3.6 -V
-```
+## User Stories
+The application user is able to:
+- Create an account and be logged in to the application.
+- Be given a random username.
+- See a list of categories provided on the homepage.
+- Enter a specific category.
+- Post the issue he/she is facing.
+- Reply to a gived raised issue and offer help and advice to the affected.
+- Delete his/her post and comment.
+- Click on the SOS button and receive an email with links to various therapy centres.
 
-**Installing Python3.6**
+## Technologies Used
+- Python 3.6.6(Flask Framework)
+- HTML5
+- CSS3
+- Bootstrap4
+- Javascript
+- SQLAlchemy
+- Visual Studio Code text editor
 
-To install python3.6 you can quicky do that by typing:
+## Known Bugs
+No known bugs so far
 
+## Deployment Host
+- Heroku
 
-
-```
-sudo apt-get install python3.6
-```
-
-# Setup/Installation Reqiurements.
-
-**To work With this cli {follow the below instructions for set up.}**
-
-1. You will need Internet connection.
-
-2. You will also need a Webpage URL to load in URL's:
-
-3. To get to this CLI fist you need to get to the Flask-Shell-Script repository.
-
-Link:-> ```https://github.com/zecollokaris/Flask-Shell-Script```
-
-4. From there you can access Flask-shell-script.
-
-5. **Clone** the project.
-
-6. **Once you done with cloning** and project is on your device.
-
-7. **get into project folder** (cd into project). 
+## Support and Contact Details
+For any comments,suggestions,feedback or inquiries about the application,Contact us via email:giftlumumba2@gmail.com
 
 
+## License
+*MIT License*
+Copyright <2018> <GIFT LUMUMBA>
 
-# **HOW TO USE.**
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-**To work With this Django-shell-script**
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-1. **Make sure your inside the folder containing script.**
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-2. Create **Flask folder structure**
-
-    ```
-    source newFlask.sh .
-    ```
-
-    ```
-    **Note there is a fullstop (.) at the end** ( source newFlask.sh . )
-    ```
-
-4. You Flask is ready **HAPPY CODING :-)**
+Copyright (c) 2018 **Gift Lumumba**
