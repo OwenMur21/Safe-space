@@ -4,10 +4,11 @@ from flask_login import login_required, current_user
 from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Commenthealth, Mental, Commentmental
 from .forms import PostForm, CommentForm
 from profanityfilter import ProfanityFilter
+from ..email import mail_message
 
 
 pf = ProfanityFilter()
-pf_custom = ProfanityFilter(custom_censor_list=['die','kufa','mbuzi','mavi','stupid','shonde','fago','gofa','chichi','lezi','ujinga','fala','horny','suck my','lick my','kiss my','balls',''])
+pf_custom = ProfanityFilter(custom_censor_list=['die','kufa','mbuzi','mavi','stupid','shonde','fago','gofa','chichi','lezi','ujinga','fala','horny','suck my','lick my','kiss my','balls'])
 
 @main.route('/')
 def home():
@@ -305,3 +306,15 @@ def del_commentm(id):
     comment.delete_commentmental()
     return redirect(url_for('.view_mental',id=mental.id))
 
+
+@main.route('/sos/<int:id>', methods=['GET', 'POST'])
+@login_required
+def sos(id):
+    """
+    Function that enables one to send an sos
+    """
+    user = User.query.filter_by(id=id).first()
+    mail_message("Get help don't give up","email/sos", user.email,user = user)
+    return redirect(url_for('main.index', user=user))
+
+ 
