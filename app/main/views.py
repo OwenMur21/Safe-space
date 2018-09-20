@@ -3,7 +3,11 @@ from flask import render_template,abort,redirect,url_for,request,abort,flash
 from flask_login import login_required, current_user
 from ..models import User, Crisis, Commentcrisis, Fam, Commentfam, Health, Commenthealth, Mental, Commentmental
 from .forms import PostForm, CommentForm
+from profanityfilter import ProfanityFilter
 
+
+pf = ProfanityFilter()
+pf_custom = ProfanityFilter(custom_censor_list=['die','kufa','mbuzi','mavi','stupid','shonde','fago','gofa','chichi','lezi','ujinga','fala','horny','suck my','lick my','kiss my','balls',''])
 
 @main.route('/')
 def home():
@@ -47,7 +51,8 @@ def new_crisis():
         abort(404)
 
     if form.validate_on_submit():
-        content = form.content.data
+        content = pf_custom.censor(form.content.data) 
+        content = pf.censor(content)
         new_crisis=Crisis(content=content,user_id=current_user.id)
         new_crisis.save_crisis()
         flash('Your post has been posted!')
@@ -68,7 +73,8 @@ def new_fam():
         abort(404)
 
     if form.validate_on_submit():
-        content = form.content.data
+        content = pf_custom.censor(form.content.data) 
+        content = pf.censor(content)
         new_fam=Fam(content=content,user_id=current_user.id)
         new_fam.save_Fam()
         flash('Your post has been posted!')
@@ -90,7 +96,8 @@ def new_depression():
         abort(404)
 
     if form.validate_on_submit():
-        content = form.content.data
+        content = pf_custom.censor(form.content.data) 
+        content = pf.censor(content)
         new_depression=Mental(content=content,user_id=current_user.id)
         new_depression.save_mental()
         flash('Your post has been posted!')
@@ -112,7 +119,8 @@ def new_health():
         abort(404)
 
     if form.validate_on_submit():
-        content = form.content.data
+        content = pf_custom.censor(form.content.data) 
+        content = pf.censor(content)
         new_health=Health(content=content,user_id=current_user.id)
         new_health.save_health()
         flash('Your post has been posted!')
@@ -184,7 +192,8 @@ def view_crisis(id):
     comments = Commentcrisis.query.filter_by(crisis_id=id).all()
     form=CommentForm()
     if form.validate_on_submit():
-        description = form.description.data
+        description = pf_custom.censor(form.description.data)
+        description = pf.censor(description)
         new_comment=Commentcrisis(description=description,user_id=current_user.id,crisis_id=the_crisis.id)
         new_comment.save_comment()
         return redirect(url_for('.view_crisis',id=id))
@@ -202,7 +211,8 @@ def view_fam(id):
     comments = Commentfam.query.filter_by(fam_id=id).all()
     form=CommentForm()
     if form.validate_on_submit():
-        description = form.description.data
+        description = pf_custom.censor(form.description.data)
+        description = pf.censor(description)
         new_comment=Commentfam(description=description,user_id=current_user.id,fam_id=the_fam.id)
         new_comment.save_commentl()
         return redirect(url_for('.view_fam',id=id))
@@ -218,7 +228,8 @@ def view_health(id):
     comments = Commenthealth.query.filter_by(health_id=id).all()
     form=CommentForm()
     if form.validate_on_submit():
-        description = form.description.data
+        description = pf_custom.censor(form.description.data)
+        description = pf.censor(description)
         new_comment=Commenthealth(description=description,user_id=current_user.id,health_id=the_health.id)
         new_comment.save_commenthealth()
         return redirect(url_for('.view_health',id=id))
@@ -234,7 +245,8 @@ def view_mental(id):
     comments = Commentmental.query.filter_by(health_id=id).all()
     form=CommentForm()
     if form.validate_on_submit():
-        description = form.description.data
+        description = pf_custom.censor(form.description.data)
+        description = pf.censor(description)
         new_comment=Commentmental(description=description,user_id=current_user.id,mental_id=the_mental.id)
         new_comment.save_commentmental()
         return redirect(url_for('.view_mental',id=id))
