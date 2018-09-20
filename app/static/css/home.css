@@ -1,4 +1,4 @@
-/* #this{
+#this{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -6,7 +6,7 @@
    
 }
 body{
-    background-image: url("/static/photos/safe.jpeg");
+    background-image: url("/static/photos/bb.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -14,6 +14,7 @@ body{
 }
 .title{
 display: none;
+color: whitesmoke;
 font-family: 'Baloo Tammudu', cursive;
 font-size: 80px;
 
@@ -21,6 +22,7 @@ font-size: 80px;
 
 .logo1{
     display: none;
+    color: whitesmoke;
     font-family: 'Baloo Tammudu', cursive;
     font-size: 70px;
 }
@@ -28,4 +30,4 @@ font-size: 80px;
     display: none;
     font-family: 'Baloo Tammudu', cursive;
     font-size: 70px;
-} */
+}
