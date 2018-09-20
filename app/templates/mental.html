@@ -25,8 +25,9 @@
   <br>
 <div class="thumbnail">
     {% for dep in deps%}
-   <button class="collapsible"> <span class="glyphicon glyphicon-user"></span> &nbsp;{{dep.user.username}} posted: {{dep.content| truncate(24)}}</button>
+   <button class="collapsible posted"> <span class="glyphicon glyphicon-user"></span> &nbsp;{{dep.user.username}} posted: {{dep.content| truncate(24)}}</button>
 <div class="content">
+  <br>
   <p>{{dep.content}}</p>
   <hr>
    <a href="/view-mental/{{dep.id}}" class="btn-sm btn btn-success">Help out&nbsp;<i class="fas fa-smile-beam emoji"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -83,11 +84,10 @@ form{
    color:black
 
  }
-
   .collapsible{
-   font-size:20px;
+   font-size:23px;
    font-family: 'Nunito', sans-serif;
-  background-color: #5a7589;
+  background-color: #2E4053;
   color: white;
   cursor: pointer;
   padding: 18px;
