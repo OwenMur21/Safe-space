@@ -16,6 +16,7 @@ def home():
 
 
 @main.route('/about')
+@login_required
 def about():
     """
     Function that renders the about page
@@ -50,7 +51,6 @@ def new_crisis():
         content = form.content.data
         new_crisis=Crisis(content=content,user_id=current_user.id)
         new_crisis.save_crisis()
-        flash('Your post has been posted!')
         return redirect(url_for('.new_crisis'))
   
     return render_template('crisis.html',form=form,crisises=crisises)
@@ -71,7 +71,6 @@ def new_fam():
         content = form.content.data
         new_fam=Fam(content=content,user_id=current_user.id)
         new_fam.save_Fam()
-        flash('Your post has been posted!')
         return redirect(url_for('.new_fam'))
   
 
@@ -93,7 +92,6 @@ def new_depression():
         content = form.content.data
         new_depression=Mental(content=content,user_id=current_user.id)
         new_depression.save_mental()
-        flash('Your post has been posted!')
         return redirect(url_for('.new_depression'))
   
 
@@ -115,7 +113,6 @@ def new_health():
         content = form.content.data
         new_health=Health(content=content,user_id=current_user.id)
         new_health.save_health()
-        flash('Your post has been posted!')
         return redirect(url_for('.new_health'))
   
 
@@ -231,7 +228,7 @@ def view_mental(id):
     Returns the mental to be commented on
     """
     the_mental = Mental.query.filter_by(id = id).first()
-    comments = Commentmental.query.filter_by(health_id=id).all()
+    comments = Commentmental.query.filter_by(mental_id=id).all()
     form=CommentForm()
     if form.validate_on_submit():
         description = form.description.data

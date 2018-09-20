@@ -10,4 +10,4 @@ class PostForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     description = TextAreaField('Help out',validators=[Required()])
-    submit = SubmitField("Comment")
+    submit = SubmitField("Reply")
