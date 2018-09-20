@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block styles%}
+{{ super() }}
+
+<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
+
+{% endblock %}
+{% block content %}
+<body>
+<div class="container">
+<div class="form">
+  {{wtf.quick_form(form)}}
+  </div>
+<div class="thumbnail">
+    {% for health in healths%}
+   <button class="collapsible"> {{health.user.username}} posted: {{health.content| truncate(24)}}</button>
+<div class="content">
+  <p>{{health.content}}</p>
+  <hr>
+   <a href="/view-health/{{health.id}}">Help out</a>&nbsp;&nbsp;&nbsp;&nbsp;
+   <a class="btn btn-danger" href="/delete-health/{{health.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+</div>  
+
+ {% endfor %}
+
+</div>
+</div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Nunito');
+body{
+   background: #2E4053;
+ }
+ .btn {
+  font-size: 18px;
+ }
+ #submit{
+   color:white;
+   background-color: #37ad90;
+   border-color: #37ad90;
+ }
+ .form-control{
+  font-size: 29px;
+ }
+ /* #content{
+   font-size: 2px;
+ } */
+form{
+  color: white; 
+  font-size: 25px;
+  font-family: 'Nunito', sans-serif;
+ }
+ .thumbnail{
+   background-color:#5a8789;
+   color:black
+
+ }
+
+  .collapsible{
+   font-size:20px;
+  background-color: #5a7589;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: solid black 1px;
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 5px;
+ }
+ .active, .collapsible:hover {
+  background-color: #245e8a;
+}
+.content {
+  padding: 0 18px;
+  display : none;
+  overflow: hidden;
+  background-color: #749aa7;
+  font-size:20px;
+  margin-top: -4px;
+  margin-bottom:5px;
+ 
+}
+.collapsible:after {
+    content: '\02795'; 
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; 
+}
+</style>
+{% endblock %}
