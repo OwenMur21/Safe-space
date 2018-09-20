@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block styles%}
 {{ super() }}
-<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito|Patua+One" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
 {% endblock %}
 {% block content %}
 
 <body>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <div class="jumbotron">About Us</div>
@@ -26,33 +29,41 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner carousels">
                       <div class="item active carousels">
-                        <img src="/static/photos/owenm.jpg"alt="Owen Muriithi">
-                        <div class="carousel-caption">
-                          <h3 class="names">Owen Muriithi</h3>
-                          <p class="role">Back-end Department</p>
+                        <img src="/static/photos/mur.jpg"alt="Owen Muriithi">
+                            <div class="carousel-caption">
+                                <div class="well">
+                                <h3 class="names">Owen Muriithi</h3>
+                                <p class="role">Back-end</p>
+                              </div>
                         </div>
                       </div>
                   
                       <div class="item carousels">
                         <img src="/static/photos/gift.jpg" alt="Gift Lumumba">
                         <div class="carousel-caption">
-                          <h3 class="names">Gift Lumumba</h3>
-                          <p class="role">Front-end Department</p>
+                            <div class="well">
+                                <h3 class="names">Gift Lumumba</h3>
+                                <p class="role">Front-end</p>
+                              </div>
                         </div>
                       </div>
                   
                       <div class="item carousels">
                         <img src="/static/photos/Hannah.jpg" alt="Hannah Chege">
                         <div class="carousel-caption">
-                          <h3 class="names">Hannah Chege</h3>
-                          <p class="role">Back-end Department</p>
+                            <div class="well">
+                                <h3 class="names">Hannah Chege</h3>
+                                <p class="role">Back-end</p>
+                              </div>
                         </div>
                       </div>
                       <div class="item carousels">
-                          <img src="/static/photos/tasha.jpg" alt="Natasha Senah">
+                          <img src="/static/photos/tashaa.jpg" alt="Natasha Senah">
                           <div class="carousel-caption">
-                            <h3 class="names">Natasha Senah</h3>
-                            <p class="role">Front-end Department</p>
+                              <div class="well">
+                                  <h3 class="names">Natasha Senah</h3>
+                                  <p class="role">Front-end</p>
+                                </div>
                           </div>
                         </div>
                     </div>
@@ -63,8 +74,9 @@
           </div>
               <ul class="text">
                   <h3 class="title">Welcome to Safe-Space</h3>
+                  <hr>
                   <p class="">A place where you'll find solace and peace of mind</p>
-                  <p>in matters mental health,family conflicts,health and identity crisis</p>
+                  <p>in matters mental issues,family conflicts,health and identity crisis</p>
                   <p>through personal and in-depth interaction with guys</p>
                   <p>who will be willing to stand by you and offer immense</p>
                   <p>and life changing advice because no matter where you are in life,</p>
@@ -92,18 +104,25 @@
     height: 600px;
     text-align: left;
   }
-   body{
+  body{
     background: #2E4053;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
   }
+  
   .names{
-    font-size: 25px;
+    text-align: center;
+    font-size: 35px;
     font-family: 'Patua One', cursive; 
-    color: black;
+    color: whitesmoke;
   }
   .role{
-    font-size: 23px;
+    text-align: center;
+    font-size: 30px;
     font-family: 'Patua One', cursive; 
-    color: black;
+    color: whitesmoke;
   }
   .thumbnail{
     width: 629px;
@@ -119,26 +138,22 @@
     font-family: 'Patua One', cursive; 
   }
   .text{
-    font-size: 19px;
+    font-size: 21.5px;
     color: solid whitesmoke;
+    font-family: 'Nunito', sans-serif;
   }
   .title{
     font-family: 'Patua One', cursive; 
-    font-size: 33px;
-
+    font-size: 36px;
+    border-style: solid;
+    border-width: 4px 10px 4px 10px;
+    text-align: center;
   }
-  /* .footer{
-    height:60px;
-  
+  .well{
+    background: rgb(19, 19, 19);
+    border:  rgb(19, 19, 19);
+    text-decoration-color: whitesmoke;
   }
-  .owen{
-    height:600px;
-    width: 500px;
-  }
-  .owenm{
-    height:600px;
-  } */
-
   
 </style>
 

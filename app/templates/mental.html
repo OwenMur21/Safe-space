@@ -5,21 +5,32 @@
 
 <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/darkly/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 {% endblock %}
 {% block content %}
 <body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 <div class="container">
 <div class="form">
   {{wtf.quick_form(form)}}
   </div>
+  <br>
 <div class="thumbnail">
     {% for dep in deps%}
-   <button class="collapsible"> {{dep.user.username}} posted: {{dep.content| truncate(24)}}</button>
+   <button class="collapsible posted"> <span class="glyphicon glyphicon-user"></span> &nbsp;{{dep.user.username}} posted: {{dep.content| truncate(24)}}</button>
 <div class="content">
+  <br>
   <p>{{dep.content}}</p>
   <hr>
-   <a href="/view-mental/{{dep.id}}">Help out</a>&nbsp;&nbsp;&nbsp;&nbsp;
+   <a href="/view-mental/{{dep.id}}" class="btn-sm btn btn-success">Help out&nbsp;<i class="fas fa-smile-beam emoji"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
    <a class="btn btn-danger" href="/delete-mental/{{dep.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 </div>  
 
@@ -46,9 +57,14 @@ for (i = 0; i < coll.length; i++) {
 </body>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Nunito');
-body{
-   background: #2E4053;
- }
+  body{
+    background: #2E4053;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
  .btn {
   font-size: 18px;
  }
@@ -73,10 +89,10 @@ form{
    color:black
 
  }
-
   .collapsible{
-   font-size:20px;
-  background-color: #5a7589;
+   font-size:23px;
+   font-family: 'Nunito', sans-serif;
+  background-color: #2E4053;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -109,6 +125,10 @@ form{
 
 .active:after {
     content: "\2796"; 
+}
+.emoji{
+  color: rgb(34, 31, 31);
+  font-size: 25px;
 }
 </style>
 {% endblock %}
