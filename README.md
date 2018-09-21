@@ -54,7 +54,11 @@ No known bugs so far
 - Heroku
 
 ## Support and Contact Details
-For any comments,suggestions,feedback or inquiries about the application,Contact us via email:giftlumumba2@gmail.com
+For any comments,suggestions,feedback or inquiries about the application,Contact us via the following emails:
+a) giftlumumba2@gmail.com
+b) owenmuriithi@gmail.com
+c) chegehannah45@gmail.com
+d) tashsenah123@gmail.com
 
 
 ## License
